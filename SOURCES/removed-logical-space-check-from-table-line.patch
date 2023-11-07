@@ -1,0 +1,34 @@
+From 8fb4ef85097e7b46cb3604612a49e480efd4465a Mon Sep 17 00:00:00 2001
+From: Andrew Walsh <awalsh@redhat.com>
+Date: Wed, 24 Aug 2022 12:00:12 -0400
+Subject: [PATCH] Removed logical space check from table line.
+
+Until the LVM tooling can be updated to use accurate sizes, this check
+can't be implemented.
+
+Signed-off-by: Andrew Walsh <awalsh@redhat.com>
+---
+ vdo/vdo-component.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/vdo/vdo-component.c b/vdo/vdo-component.c
+index ac1ac1f7..50ba438b 100644
+--- a/vdo/vdo-component.c
++++ b/vdo/vdo-component.c
+@@ -303,13 +303,6 @@ int vdo_validate_config(const struct vdo_config *config,
+ 		if (result != UDS_SUCCESS) {
+ 			return result;
+ 		}
+-
+-		if (logical_block_count != config->logical_blocks) {
+-			uds_log_error("A logical size of %llu blocks was specified, but that differs from the %llu blocks configured in the vdo super block",
+-			      (unsigned long long) logical_block_count,
+-			      (unsigned long long) config->logical_blocks);
+-			return VDO_PARAMETER_MISMATCH;
+-		}
+ 	}
+ 
+ 	result = ASSERT(config->logical_blocks <= MAXIMUM_VDO_LOGICAL_BLOCKS,
+-- 
+2.37.1
+
