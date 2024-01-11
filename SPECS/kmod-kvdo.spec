@@ -1,12 +1,12 @@
 %global commit                  c9bd224d9c48b35f3db202e648c3abaece81f39e
 %global gittag                  8.2.1.6
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            75
+%define spec_release            98
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-284.3.1.el9_2
+%define kmod_kernel_version	5.14.0-360.el9
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
 %define kmod_devel_package	0
@@ -155,9 +155,101 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Mon Mar 20 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-75.el9_2
-- Rebuilt for latest 5.14.0 el9_2 kernel.
-- Related: rhbz#2119820
+* Thu Aug 24 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-98.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Mon Jul 31 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-97.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Fri Jul 21 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-96.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue Jul 18 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-95.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Wed Jul 12 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-94.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Wed Jul 05 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-93.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue Jun 27 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-92.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue Jun 20 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-91.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Wed Jun 14 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-90.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Mon Jun 12 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-89.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue May 30 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-88.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue May 23 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-87.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Fri May 19 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-86.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Wed May 17 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-85.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Thu May 11 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-84.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Thu May 04 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-83.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Mon May 01 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-82.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue Apr 25 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-81.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Fri Apr 14 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-80.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Tue Apr 11 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-79.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Mon Apr 03 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-78.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Thu Mar 30 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-77.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Mon Mar 20 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-76.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
+
+* Mon Mar 13 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-75.el9
+- Rebuilt for latest kernel.
+- Related: rhbz#2172911
 
 * Mon Feb 27 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-74.el9
 - Rebuilt for latest kernel.
