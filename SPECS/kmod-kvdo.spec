@@ -1,12 +1,12 @@
 %global commit                  c3fab428a1fdc02cb0d5f4bba7e88ec94056e96f
 %global gittag                  6.2.8.7
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            88
+%define spec_release            92
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	4.18.0-458.el8
+%define kmod_kernel_version	4.18.0-507.el8
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
 %define kmod_dependencies       %{nil}
@@ -165,6 +165,22 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Thu Aug 03 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-92
+- Rebuilt for latest 4.18 kernel.
+- Related: rhbz#2173037
+
+* Thu Apr 27 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-91
+- Rebuilt for latest 4.18 kernel.
+- Related: rhbz#2173037
+
+* Wed Apr 12 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-90
+- Rebuilt for latest 4.18 kernel.
+- Related: rhbz#2173037
+
+* Wed Mar 22 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-89
+- Rebuilt for latest 4.18 kernel.
+- Related: rhbz#2173037
+
 * Tue Feb 14 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-88
 - Fixed bug in read-only rebuild when the logical size of the volume is an
   exact multiple of 821 4K blocks.
