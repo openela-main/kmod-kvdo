@@ -1,12 +1,12 @@
 %global commit                  c9bd224d9c48b35f3db202e648c3abaece81f39e
 %global gittag                  8.2.1.6
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            98
+%define spec_release            102
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-360.el9
+%define kmod_kernel_version	5.14.0-362.24.1.el9_3
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
 %define kmod_devel_package	0
@@ -155,6 +155,12 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Thu Feb 22 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-102.el9
+- Reverted commits from RHEL-17420.
+- Reverts: RHEL-17420
+- Rebuilt for latest kernel.
+- Resolves: RHEL-23075
+
 * Thu Aug 24 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-98.el9
 - Rebuilt for latest kernel.
 - Related: rhbz#2172911
