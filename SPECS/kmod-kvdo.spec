@@ -1,12 +1,12 @@
-%global commit                  c9bd224d9c48b35f3db202e648c3abaece81f39e
-%global gittag                  8.2.1.6
+%global commit                  c6254c6db5cfa02ecf5bbb4db2c5728f23aa3b2a
+%global gittag                  8.2.3.3
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            102
+%define spec_release            117
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-362.24.1.el9_3
+%define kmod_kernel_version	5.14.0-421.el9
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
 %define kmod_devel_package	0
@@ -43,8 +43,9 @@ ExcludeArch:    s390
 Provides:         kmod-%{kmod_name} = %{?epoch:%{epoch}:}%{version}-%{release}
 Requires(post):   %{_sbindir}/weak-modules
 Requires(postun): %{_sbindir}/weak-modules
-Requires:         kernel-core-uname-r    >= %{kmod_kernel_version}
+Requires:         kernel-core-uname-r >= %{kmod_kernel_version}
 Requires:         kernel-modules-uname-r >= %{kmod_kernel_version}
+Conflicts:        kernel-64k
 
 %description
 Virtual Data Optimizer (VDO) is a device mapper target that delivers
@@ -155,11 +156,89 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Thu Feb 22 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-102.el9
-- Reverted commits from RHEL-17420.
-- Reverts: RHEL-17420
+* Wed Feb 14 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-117.el9
 - Rebuilt for latest kernel.
-- Resolves: RHEL-23075
+- Related: RHEL-11426
+
+* Mon Feb 12 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-116.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Tue Jan 23 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-115.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Fri Jan 19 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-114.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Thu Jan 18 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-113.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Mon Jan 15 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-112.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Tue Jan 09 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-111.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Wed Jan 03 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-110.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Tue Dec 19 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-109.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Wed Dec 06 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-108.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Tue Dec 05 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-107.el9
+- Revert previous changes and add kernel-64k as a conflict.
+- Resolves: RHEL-8354
+
+* Tue Nov 28 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-106.el9
+- Modify to accommodate kernel-64k packages.
+- Resolves: RHEL-8354
+
+* Mon Nov 27 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-105.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Mon Nov 20 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-104.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Mon Nov 13 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-103.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Fri Nov 03 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-102.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Thu Oct 26 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-101.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Fri Oct 20 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-100.el9
+- Adapted to backported kernel changes.
+- Resolves: RHEL-11975
+
+* Tue Oct 10 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-100.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
+
+* Fri Oct 06 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-99.el9
+- Added temporary patch file to correct build failures regarding io-factory.c
+- Related: RHEL-11426
+
+* Fri Oct 06 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-99.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-11426
 
 * Thu Aug 24 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.1.6-98.el9
 - Rebuilt for latest kernel.
