@@ -1,12 +1,12 @@
 %global commit                  c3fab428a1fdc02cb0d5f4bba7e88ec94056e96f
 %global gittag                  6.2.8.7
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            92
+%define spec_release            94
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	4.18.0-507.el8
+%define kmod_kernel_version	4.18.0-526.el8
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
 %define kmod_dependencies       %{nil}
@@ -165,6 +165,14 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Mon Nov 20 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-94
+- Rebuilt for latest 4.18 kernel.
+- Related: RHEL-11425
+
+* Fri Oct 06 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-93
+- Rebuilt for latest 4.18 kernel.
+- Related: RHEL-11425
+
 * Thu Aug 03 2023 - Susan LeGendre-McGhee <slegendr@redhat.com> - 6.2.8.7-92
 - Rebuilt for latest 4.18 kernel.
 - Related: rhbz#2173037
