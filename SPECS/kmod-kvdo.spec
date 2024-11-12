@@ -1,12 +1,13 @@
-%global commit                  c6254c6db5cfa02ecf5bbb4db2c5728f23aa3b2a
-%global gittag                  8.2.3.3
+%global commit                  7c5455297c90653c85fb9f99aa1fe3f5b8008966
+%global gittag                  8.2.4.15
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            117
+%define spec_release            141
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-421.el9
+%define kmod_kernel_version	5.14.0-503.4.1.el9_5
+%define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
 %define kmod_devel_package	0
@@ -118,7 +119,8 @@ mkdir obj
 rm -rf obj
 cp -r source obj
 make -C %{kernel_source} M=$PWD/obj/%{kmod_kbuild_dir} V=1 \
-	NOSTDINC_FLAGS="-I $PWD/obj/include -I $PWD/obj/include/uapi"
+	NOSTDINC_FLAGS="-I $PWD/obj/include -I $PWD/obj/include/uapi" \
+	RHEL_RELEASE_EXTRA=%{kmod_kernel_extra}
 # mark modules executable so that strip-to-file can strip them
 find obj/%{kmod_kbuild_dir} -name "*.ko" -type f -exec chmod u+x '{}' +
 
@@ -156,6 +158,112 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Tue Sep 17 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.15-141.el9_5
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Sep 17 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.15-140.el9_5
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Aug 27 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-139.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Thu Aug 08 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-138.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Mon Aug 05 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-137.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Thu Aug 01 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.15-136.el9
+- Fixed null pointer error with timed-out dedupt contexts.
+- Made timed-out dedupe contexts available for reuse sooner.
+- Added build support for more kernel versions.
+- Resolves: RHEL-42515
+
+* Tue Jul 30 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.10-136.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Thu Jul 11 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.10-135.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Mon Jul 08 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.10-134.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Wed Jul 03 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.10-133.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Thu Jun 20 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.10-132.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Thu Jun 20 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.10-131.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Fri Jun 14 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.10-130.el9
+- Adapt to backported kernel changes and function deprecations.
+- Resolves: RHEL-35753
+
+* Wed Jun 12 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-129.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Fri Jun 07 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-128.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Jun 04 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-127.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Jun 04 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-126.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Wed May 22 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-125.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Wed May 15 2024 - Chung Chung <cchung@redhat.com> - 8.2.3.3-124.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue May 07 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-123.el9
+- Add temporary patch to correct build failures.
+- Related: RHEL-30884
+
+* Mon May 06 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-123.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Apr 30 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-122.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Mon Apr 29 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-121.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Thu Apr 25 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-120.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Apr 23 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-119.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
+* Tue Apr 02 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-118.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-30884
+
 * Wed Feb 14 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.3.3-117.el9
 - Rebuilt for latest kernel.
 - Related: RHEL-11426
