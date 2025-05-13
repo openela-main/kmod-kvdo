@@ -1,12 +1,12 @@
-%global commit                  7c5455297c90653c85fb9f99aa1fe3f5b8008966
-%global gittag                  8.2.4.15
+%global commit                  2ede754192d76e9f195503ca5eba4598943e9f92
+%global gittag                  8.2.5.10
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            141
+%define spec_release            161
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-503.4.1.el9_5
+%define kmod_kernel_version	5.14.0-568.el9
 %define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
@@ -107,8 +107,8 @@ printf '%s\n' "${modules[@]}" | %{_sbindir}/weak-modules --dracut=/usr/bin/dracu
 
 %prep
 %setup -n %{kmod_name}-%{commit}
-%patch0 -p1
-%patch1 -p1
+%patch 0 -p1
+%patch 1 -p1
 %{nil}
 set -- *
 mkdir source
@@ -158,6 +158,99 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Fri Feb 14 2025 - Andy Walsh <awalsh@redhat.com> - 8.2.5.10-160.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Mon Feb 10 2025 - Andy Walsh <awalsh@redhat.com> - 8.2.5.10-160.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Wed Feb 05 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-159.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Mon Feb 03 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-158.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Tue Jan 28 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-157.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Mon Jan 27 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-156.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Fri Jan 24 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-155.el9
+- Adapted to backported kernel changes
+- Resolves: RHEL-75479
+
+* Fri Jan 17 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.2-155.el9
+- TEMPORARY FIX to correct build failures regarding blk_limits_io_{min,opt} error
+- Related: RHEL-61201
+
+* Fri Jan 17 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.2-155.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Thu Dec 19 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-154.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Fri Dec 13 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-153.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Mon Dec 09 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-152.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Fri Nov 29 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-151.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Wed Nov 27 2024 - Andy Walsh <awalsh@redhat.com> - 8.2.5.2-150.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Wed Nov 20 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-149.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Tue Nov 12 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-148.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Fri Nov 08 2024 - Chung Chung <cchung@redhat.com> - 8.2.5.2-147.el9
+- Fixed discards to use correct size limit.
+- Removed spurious metadata assertion.
+- Resolves: RHEL-66271
+
+* Tue Nov 05 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-147.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Fri Nov 01 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-146.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Wed Oct 30 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-145.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Mon Oct 21 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-144.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Thu Oct 17 2024 - Chung Chung <cchung@redhat.com> - 8.2.4.15-143.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
+* Mon Oct 07 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.15-142.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-61201
+
 * Tue Sep 17 2024 - Susan LeGendre-McGhee <slegendr@redhat.com> - 8.2.4.15-141.el9_5
 - Rebuilt for latest kernel.
 - Related: RHEL-30884
