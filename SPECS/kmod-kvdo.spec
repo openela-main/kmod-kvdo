@@ -1,7 +1,7 @@
-%global commit                  2ede754192d76e9f195503ca5eba4598943e9f92
-%global gittag                  8.2.5.10
+%global commit                  e2e769fd32a22402bb6c4cbfcbef24edb296c600
+%global gittag                  8.2.5.14
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            161
+%define spec_release            163
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
@@ -158,6 +158,18 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Wed Jun 25 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-163.el9
+- Rebuilt to correct driver not signed
+- Related: RHEL-93002
+
+* Wed Jun 25 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-162.el9
+- Rebuilt to correct driver not signed
+- Related: RHEL-93002
+
+* Fri Jun 06 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-161.el9
+- Clear dedupe_context reference when releasing the context.
+- Resolves: RHEL-93002
+
 * Fri Feb 14 2025 - Andy Walsh <awalsh@redhat.com> - 8.2.5.10-160.el9
 - Rebuilt for latest kernel.
 - Related: RHEL-61201
