@@ -1,12 +1,12 @@
 %global commit                  e2e769fd32a22402bb6c4cbfcbef24edb296c600
 %global gittag                  8.2.5.14
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            163
+%define spec_release            164
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-568.el9
+%define kmod_kernel_version	5.14.0-570.37.1.el9_6
 %define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
@@ -158,6 +158,10 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Tue Aug 19 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-164.el9_6
+- Updated the supported kernel version.
+- Resolves: RHEL-107188
+
 * Wed Jun 25 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-163.el9
 - Rebuilt to correct driver not signed
 - Related: RHEL-93002
