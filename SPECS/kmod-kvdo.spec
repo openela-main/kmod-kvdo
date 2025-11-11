@@ -1,12 +1,12 @@
-%global commit                  e2e769fd32a22402bb6c4cbfcbef24edb296c600
-%global gittag                  8.2.5.14
+%global commit                  bc83d8b1b954eeeab83bbc85ce6d4dadf646a315
+%global gittag                  8.2.6.3
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            164
+%define spec_release            175
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-570.37.1.el9_6
+%define kmod_kernel_version	5.14.0-611.el9
 %define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
@@ -158,23 +158,67 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Tue Aug 19 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-164.el9_6
-- Updated the supported kernel version.
-- Resolves: RHEL-107188
+* Wed Sep 10 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-175.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-82757
 
-* Wed Jun 25 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-163.el9
-- Rebuilt to correct driver not signed
-- Related: RHEL-93002
+* Tue Sep 02 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-174.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-82757
 
-* Wed Jun 25 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-162.el9
-- Rebuilt to correct driver not signed
-- Related: RHEL-93002
+* Tue Aug 19 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-173.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-82757
 
-* Fri Jun 06 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.14-161.el9
+* Tue Aug 05 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-172.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-82757
+
+* Fri Aug 01 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-171.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-82757
+
+* Wed Jul 23 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-170.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-82757
+
+* Tue Jul 08 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-169.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Fri Jun 27 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-168.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Mon Jun 16 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-167.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Tue May 27 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-166.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Wed May 21 2025 - Chung Chung <cchung@redhat.com> - 8.2.6.3-165.el9
 - Clear dedupe_context reference when releasing the context.
-- Resolves: RHEL-93002
+- Resolves: RHEL-83857
 
-* Fri Feb 14 2025 - Andy Walsh <awalsh@redhat.com> - 8.2.5.10-160.el9
+* Tue May 06 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-165.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Wed Apr 30 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-164.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Thu Apr 10 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-163.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Tue Mar 11 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-162.el9
+- Rebuilt for latest kernel.
+- Related: RHEL-82757
+
+* Fri Feb 14 2025 - Andy Walsh <awalsh@redhat.com> - 8.2.5.10-161.el9
 - Rebuilt for latest kernel.
 - Related: RHEL-61201
 
