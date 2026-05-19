@@ -1,12 +1,12 @@
-%global commit                  bc83d8b1b954eeeab83bbc85ce6d4dadf646a315
-%global gittag                  8.2.6.3
+%global commit                  7c9146ecf5d7d4e5d56f410542664682668007c9
+%global gittag                  8.2.7.4
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            176
+%define spec_release            189
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-611.35.1.el9_7
+%define kmod_kernel_version	5.14.0-686.el9
 %define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
@@ -158,17 +158,73 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Mon Feb 23 2026 - Chung Chung <cchung@redhat.com> - 8.2.5.10-176.el9
+* Thu Mar 19 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.3-189.el9
 - Rebuilt for latest kernel.
-- Resolves: RHEL-151416
+- Resolves: RHEL-112497
 
-* Wed Sep 10 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-175.el9
+* Mon Feb 23 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.3-188.el9
 - Rebuilt for latest kernel.
-- Resolves: RHEL-82757
+- Resolves: RHEL-112497
 
-* Tue Sep 02 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-174.el9
+* Fri Feb 06 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-187.el9
+- Remove us_to_ktime definition to resolve kernel conflicts.
+- Resolves: RHEL-146745
+
+* Fri Jan 09 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.3-187.el9
 - Rebuilt for latest kernel.
-- Resolves: RHEL-82757
+- Resolves: RHEL-112497
+
+* Fri Jan 09 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.3-186.el9
+- Replace from_timer with timer_container_of
+- Resolves: RHEL-140206
+
+* Mon Dec 22 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-185.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Wed Dec 10 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-184.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Mon Dec 08 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-183.el9
+- TEMPORARY FIX to correct build failures regarding from_timer error
+- Resolves: RHEL-112497
+
+* Mon Dec 01 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-182.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Tue Nov 18 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-181.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Tue Nov 11 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-180.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Fri Oct 24 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-179.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Mon Oct 13 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-178.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Wed Oct 01 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-177.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Mon Sep 29 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-176.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Tue Sep 16 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-175.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
+
+* Fri Sep 05 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-174.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-112497
 
 * Tue Aug 19 2025 - Chung Chung <cchung@redhat.com> - 8.2.5.10-173.el9
 - Rebuilt for latest kernel.
