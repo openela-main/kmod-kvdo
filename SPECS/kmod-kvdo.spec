@@ -1,12 +1,12 @@
 %global commit                  7c9146ecf5d7d4e5d56f410542664682668007c9
 %global gittag                  8.2.7.4
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            189
+%define spec_release            200
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-686.el9
+%define kmod_kernel_version	5.14.0-738.el9
 %define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
@@ -158,11 +158,55 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Thu Mar 19 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.3-189.el9
+* Wed Aug 19 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-200.el9
 - Rebuilt for latest kernel.
-- Resolves: RHEL-112497
+- Resolves: RHEL-163930
 
-* Mon Feb 23 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.3-188.el9
+* Fri Jul 07 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-199.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Fri Jul 03 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-198.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Wed Jun 24 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-197.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Tue Jun 16 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-196.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Tue Jun 09 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-195.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Wed May 20 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-194.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Fri May 15 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-193.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Mon May 11 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-192.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Fri May 01 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-191.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Tue Apr 28 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-190.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Thu Apr 02 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-189.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Mon Feb 23 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-188.el9
 - Rebuilt for latest kernel.
 - Resolves: RHEL-112497
 
