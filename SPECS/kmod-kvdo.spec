@@ -1,12 +1,12 @@
 %global commit                  7c9146ecf5d7d4e5d56f410542664682668007c9
 %global gittag                  8.2.7.4
 %global shortcommit             %(c=%{commit}; echo ${c:0:7})
-%define spec_release            200
+%define spec_release            204
 
 %define kmod_name		kvdo
 %define kmod_driver_version	%{gittag}
 %define kmod_rpm_release	%{spec_release}
-%define kmod_kernel_version	5.14.0-738.el9
+%define kmod_kernel_version	5.14.0-741.14.1.el9_9
 %define kmod_kernel_extra %(sed 's/.*-\\([0-9]\\+\\).*/\\1/' <<< "%{kmod_kernel_version}")
 %define kmod_headers_version	%(rpm -qa kernel-devel | sed 's/^kernel-devel-//')
 %define kmod_kbuild_dir		.
@@ -158,6 +158,18 @@ install -m 644 -D source/greylist.txt $RPM_BUILD_ROOT/usr/share/doc/kmod-%{kmod_
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Mon Oct 01 2026 - Matthew Sakai <msakai@redhat.com> - 8.2.7.4-204.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Mon Sep 28 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-203.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
+* Mon Sep 21 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-202.el9
+- Rebuilt for latest kernel.
+- Resolves: RHEL-163930
+
 * Wed Aug 19 2026 - Chung Chung <cchung@redhat.com> - 8.2.7.4-200.el9
 - Rebuilt for latest kernel.
 - Resolves: RHEL-163930
